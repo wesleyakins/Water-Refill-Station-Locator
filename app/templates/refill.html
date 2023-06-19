@@ -1,0 +1,9 @@
+<h1>Refill at this station?</h1>
+<form action="" method="post" novalidate target="_top">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.refill_val.label }}<br>
+        {{ form.refill_val(size=32) }}<br>
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>

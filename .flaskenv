@@ -1,0 +1,2 @@
+FLASK_APflP=refill.py
+FLASK_ENV=development

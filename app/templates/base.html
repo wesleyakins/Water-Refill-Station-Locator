@@ -1,0 +1,38 @@
+<html>
+    <head>
+        {% if title %}
+        <title>{{ title }} - Refill</title>
+        {% else %}
+        <title>Welcome to Refill!</title>
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        Refill: 
+        <div class ="navbar">
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('refill_station')}}">Refill Stations</a></li>
+                <li><a href="{{ url_for('redeem_points') }}">Redeem Points</a></li>
+                <li><a href="{{ url_for('settings') }}">Settings</a></li>
+                {% if not current_user.is_authenticated %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% else %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith%}
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
